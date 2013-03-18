@@ -19,6 +19,9 @@
 		1A2902E716F78E57000E5FF3 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2902E516F78E57000E5FF3 /* MainStoryboard_iPhone.storyboard */; };
 		1A2902EA16F78E57000E5FF3 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2902E816F78E57000E5FF3 /* MainStoryboard_iPad.storyboard */; };
 		1A2902ED16F78E57000E5FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2902EC16F78E57000E5FF3 /* ViewController.m */; };
+		1A57D82B16F78F6D004BCEA7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D82A16F78F6D004BCEA7 /* AVFoundation.framework */; };
+		1A57D82D16F790D5004BCEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */; };
+		1A57D83016F792F0004BCEA7 /* LiveFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,10 @@
 		1A2902E916F78E57000E5FF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		1A2902EB16F78E57000E5FF3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1A2902EC16F78E57000E5FF3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1A57D82A16F78F6D004BCEA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveFaceDetector.h; sourceTree = "<group>"; };
+		1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveFaceDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A57D82D16F790D5004BCEA7 /* QuartzCore.framework in Frameworks */,
+				1A57D82B16F78F6D004BCEA7 /* AVFoundation.framework in Frameworks */,
 				1A2902CE16F78E57000E5FF3 /* UIKit.framework in Frameworks */,
 				1A2902D016F78E57000E5FF3 /* Foundation.framework in Frameworks */,
 				1A2902D216F78E57000E5FF3 /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +84,8 @@
 		1A2902CC16F78E56000E5FF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */,
+				1A57D82A16F78F6D004BCEA7 /* AVFoundation.framework */,
 				1A2902CD16F78E57000E5FF3 /* UIKit.framework */,
 				1A2902CF16F78E57000E5FF3 /* Foundation.framework */,
 				1A2902D116F78E57000E5FF3 /* CoreGraphics.framework */,
@@ -92,6 +103,8 @@
 				1A2902EB16F78E57000E5FF3 /* ViewController.h */,
 				1A2902EC16F78E57000E5FF3 /* ViewController.m */,
 				1A2902D416F78E57000E5FF3 /* Supporting Files */,
+				1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */,
+				1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */,
 			);
 			path = FlappyFace;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 				1A2902DA16F78E57000E5FF3 /* main.m in Sources */,
 				1A2902DE16F78E57000E5FF3 /* AppDelegate.m in Sources */,
 				1A2902ED16F78E57000E5FF3 /* ViewController.m in Sources */,
+				1A57D83016F792F0004BCEA7 /* LiveFaceDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,7 @@
 				1A2902F216F78E57000E5FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
