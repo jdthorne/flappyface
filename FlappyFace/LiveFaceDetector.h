@@ -8,6 +8,9 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-@interface LiveFaceDetector : AVCaptureOutput
+@interface LiveFaceDetector : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
+
+@property(nonatomic, retain) AVCaptureVideoDataOutput* videoDataOutput;
+@property(nonatomic, retain) UIImage* latestImage;
 
 @end

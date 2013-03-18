@@ -19,11 +19,15 @@
 @implementation ViewController
 
 @synthesize cameraView;
+@synthesize debugView;
+@synthesize faceDetector;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
+    faceDetector = [LiveFaceDetector new];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,8 +59,16 @@
 		NSLog(@"ERROR: trying to open camera: %@", error);
 	}
 	[session addInput:input];
+    
+    [session addOutput:faceDetector.videoDataOutput];
+    [[self.faceDetector.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
 	
 	[session startRunning];
+}
+
+-(IBAction)debugTap:(id)sender
+{
+    self.debugView.image = self.faceDetector.latestImage;
 }
 
 @end

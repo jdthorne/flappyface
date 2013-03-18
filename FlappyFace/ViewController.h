@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LiveFaceDetector.h"
 
 @interface ViewController : UIViewController
 
-    @property(nonatomic,retain) IBOutlet UIView* cameraView;
+@property(nonatomic, retain) IBOutlet UIView* cameraView;
+@property(nonatomic, retain) IBOutlet UIImageView* debugView;
+
+-(IBAction)debugTap:(id)sender;
+
+@property(nonatomic, retain) LiveFaceDetector* faceDetector;
 
 @end

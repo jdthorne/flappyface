@@ -22,6 +22,8 @@
 		1A57D82B16F78F6D004BCEA7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D82A16F78F6D004BCEA7 /* AVFoundation.framework */; };
 		1A57D82D16F790D5004BCEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */; };
 		1A57D83016F792F0004BCEA7 /* LiveFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */; };
+		1A57D83216F797DC004BCEA7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83116F797DC004BCEA7 /* CoreImage.framework */; };
+		1A57D83416F797F3004BCEA7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83316F797F2004BCEA7 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveFaceDetector.h; sourceTree = "<group>"; };
 		1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveFaceDetector.m; sourceTree = "<group>"; };
+		1A57D83116F797DC004BCEA7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		1A57D83316F797F2004BCEA7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A57D83416F797F3004BCEA7 /* CoreMedia.framework in Frameworks */,
+				1A57D83216F797DC004BCEA7 /* CoreImage.framework in Frameworks */,
 				1A57D82D16F790D5004BCEA7 /* QuartzCore.framework in Frameworks */,
 				1A57D82B16F78F6D004BCEA7 /* AVFoundation.framework in Frameworks */,
 				1A2902CE16F78E57000E5FF3 /* UIKit.framework in Frameworks */,
@@ -84,6 +90,8 @@
 		1A2902CC16F78E56000E5FF3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A57D83316F797F2004BCEA7 /* CoreMedia.framework */,
+				1A57D83116F797DC004BCEA7 /* CoreImage.framework */,
 				1A57D82C16F790D5004BCEA7 /* QuartzCore.framework */,
 				1A57D82A16F78F6D004BCEA7 /* AVFoundation.framework */,
 				1A2902CD16F78E57000E5FF3 /* UIKit.framework */,
@@ -102,9 +110,9 @@
 				1A2902E816F78E57000E5FF3 /* MainStoryboard_iPad.storyboard */,
 				1A2902EB16F78E57000E5FF3 /* ViewController.h */,
 				1A2902EC16F78E57000E5FF3 /* ViewController.m */,
-				1A2902D416F78E57000E5FF3 /* Supporting Files */,
 				1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */,
 				1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */,
+				1A2902D416F78E57000E5FF3 /* Supporting Files */,
 			);
 			path = FlappyFace;
 			sourceTree = "<group>";
