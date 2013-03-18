@@ -24,6 +24,7 @@
 		1A57D83016F792F0004BCEA7 /* LiveFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */; };
 		1A57D83216F797DC004BCEA7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83116F797DC004BCEA7 /* CoreImage.framework */; };
 		1A57D83416F797F3004BCEA7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83316F797F2004BCEA7 /* CoreMedia.framework */; };
+		1A57D83716F79D7B004BCEA7 /* Emma-Watson.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveFaceDetector.m; sourceTree = "<group>"; };
 		1A57D83116F797DC004BCEA7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		1A57D83316F797F2004BCEA7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Emma-Watson.png"; path = "Artwork/Emma-Watson.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		1A2902C116F78E56000E5FF3 = {
 			isa = PBXGroup;
 			children = (
+				1A57D83516F79D6D004BCEA7 /* Resources */,
 				1A2902D316F78E57000E5FF3 /* FlappyFace */,
 				1A2902CC16F78E56000E5FF3 /* Frameworks */,
 				1A2902CB16F78E56000E5FF3 /* Products */,
@@ -129,6 +132,14 @@
 				1A2902E316F78E57000E5FF3 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A57D83516F79D6D004BCEA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				1A2902E416F78E57000E5FF3 /* Default-568h@2x.png in Resources */,
 				1A2902E716F78E57000E5FF3 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1A2902EA16F78E57000E5FF3 /* MainStoryboard_iPad.storyboard in Resources */,
+				1A57D83716F79D7B004BCEA7 /* Emma-Watson.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

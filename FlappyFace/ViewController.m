@@ -13,14 +13,17 @@
 
 @interface ViewController ()
 
+@property(nonatomic, retain) UIImageView* faceView;
+
 @end
 
 
 @implementation ViewController
 
 @synthesize cameraView;
-@synthesize debugView;
 @synthesize faceDetector;
+
+@synthesize faceView;
 
 - (void)viewDidLoad
 {
@@ -28,6 +31,15 @@
     
 	// Do any additional setup after loading the view, typically from a nib.
     faceDetector = [LiveFaceDetector new];
+
+    UIImageView* face = [UIImageView new];
+    face.frame = CGRectMake(0, 0, 200, 200);
+    
+    UIImage* image = [UIImage imageNamed:@"Emma-Watson.png"];
+    face.image = image;
+    
+    [self.view addSubview:face];
+    self.faceView = face;
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +63,9 @@
 	[viewLayer addSublayer:captureVideoPreviewLayer];
 	
 	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    [device lockForConfiguration:nil];
+    device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+    [device unlockForConfiguration];
 	
 	NSError *error = nil;
 	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -59,7 +74,6 @@
 		NSLog(@"ERROR: trying to open camera: %@", error);
 	}
 	[session addInput:input];
-    
     [session addOutput:faceDetector.videoDataOutput];
     [[self.faceDetector.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
 	
@@ -68,7 +82,30 @@
 
 -(IBAction)debugTap:(id)sender
 {
-    self.debugView.image = self.faceDetector.latestImage;
+    float xCenter, yCenter;
+    
+    UIImage* image = self.faceDetector.latestImage;
+    self.faceView.image = image;
+    
+    if (self.faceDetector.detectedFaces.count == 0)
+    {
+        return;
+    }
+    
+    CIFaceFeature* feature = [self.faceDetector.detectedFaces objectAtIndex:0];
+    if (!feature.hasLeftEyePosition || !feature.hasRightEyePosition)
+    {
+        return;
+    }
+    
+    xCenter = (feature.leftEyePosition.x + feature.rightEyePosition.x) / 2.0;
+    yCenter = (feature.leftEyePosition.y + feature.rightEyePosition.y) / 2.0;
+    
+    // Swap x and y
+    float xDraw = yCenter;
+    float yDraw = xCenter;
+    
+    self.faceView.frame = CGRectMake(xDraw - 25, yDraw - 25, 50, 50);
 }
 
 @end

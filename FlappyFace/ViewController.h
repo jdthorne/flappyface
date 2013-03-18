@@ -12,10 +12,9 @@
 @interface ViewController : UIViewController
 
 @property(nonatomic, retain) IBOutlet UIView* cameraView;
-@property(nonatomic, retain) IBOutlet UIImageView* debugView;
+@property(nonatomic, retain) LiveFaceDetector* faceDetector;
 
 -(IBAction)debugTap:(id)sender;
 
-@property(nonatomic, retain) LiveFaceDetector* faceDetector;
 
 @end

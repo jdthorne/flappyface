@@ -13,4 +13,6 @@
 @property(nonatomic, retain) AVCaptureVideoDataOutput* videoDataOutput;
 @property(nonatomic, retain) UIImage* latestImage;
 
+@property(nonatomic, retain) NSArray* detectedFaces;
+
 @end

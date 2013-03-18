@@ -13,46 +13,41 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5m-Eh-8Xo">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzQ-8c-iBw">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="x7V-cD-H6B"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Debug!~">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="debugTap:" destination="2" eventType="touchUpInside" id="A30-D9-TbH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QzQ-8c-iBw" secondAttribute="trailing" constant="15" id="TvM-4q-AYE"/>
+                                    <constraint firstItem="QzQ-8c-iBw" firstAttribute="top" secondItem="F5m-Eh-8Xo" secondAttribute="top" constant="13" id="b3T-hq-wXj"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzQ-8c-iBw">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="x7V-cD-H6B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Debug!~">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="debugTap:" destination="2" eventType="touchUpInside" id="A30-D9-TbH"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbn-Ts-hXF">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="Bxa-VI-Sms"/>
-                                    <constraint firstAttribute="height" constant="68" id="nLJ-yQ-m0u"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="25" id="2vR-33-k5Q"/>
-                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="top" secondItem="3" secondAttribute="top" constant="97" id="3Gg-KH-dKR"/>
-                            <constraint firstAttribute="bottom" secondItem="F5m-Eh-8Xo" secondAttribute="bottom" constant="-97" id="86E-UT-fWa"/>
-                            <constraint firstAttribute="trailing" secondItem="F5m-Eh-8Xo" secondAttribute="trailing" constant="-25" id="MsA-Dg-5tJ"/>
-                            <constraint firstItem="lbn-Ts-hXF" firstAttribute="top" secondItem="3" secondAttribute="top" constant="5" id="iSR-hQ-IeT"/>
-                            <constraint firstAttribute="trailing" secondItem="QzQ-8c-iBw" secondAttribute="trailing" constant="11" id="q4B-O4-FoC"/>
-                            <constraint firstItem="lbn-Ts-hXF" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="10" id="x8y-ze-OgN"/>
-                            <constraint firstItem="QzQ-8c-iBw" firstAttribute="top" secondItem="3" secondAttribute="top" constant="12" id="yHK-Co-6Wa"/>
+                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="GfM-kY-eQJ"/>
+                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Wef-zp-Zbg"/>
+                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="hgG-U8-jia"/>
+                            <constraint firstItem="F5m-Eh-8Xo" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="jxQ-I8-MoT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="F5m-Eh-8Xo" id="ioG-bh-jPo"/>
-                        <outlet property="debugView" destination="lbn-Ts-hXF" id="IJ3-Sb-2N0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

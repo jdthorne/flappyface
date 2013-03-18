@@ -8,6 +8,17 @@
 
 #import "LiveFaceDetector.h"
 
+enum {
+    PHOTOS_EXIF_0ROW_TOP_0COL_LEFT			= 1, //   1  =  0th row is at the top, and 0th column is on the left (THE DEFAULT).
+    PHOTOS_EXIF_0ROW_TOP_0COL_RIGHT			= 2, //   2  =  0th row is at the top, and 0th column is on the right.
+    PHOTOS_EXIF_0ROW_BOTTOM_0COL_RIGHT      = 3, //   3  =  0th row is at the bottom, and 0th column is on the right.
+    PHOTOS_EXIF_0ROW_BOTTOM_0COL_LEFT       = 4, //   4  =  0th row is at the bottom, and 0th column is on the left.
+    PHOTOS_EXIF_0ROW_LEFT_0COL_TOP          = 5, //   5  =  0th row is on the left, and 0th column is the top.
+    PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP         = 6, //   6  =  0th row is on the right, and 0th column is the top.
+    PHOTOS_EXIF_0ROW_RIGHT_0COL_BOTTOM      = 7, //   7  =  0th row is on the right, and 0th column is the bottom.
+    PHOTOS_EXIF_0ROW_LEFT_0COL_BOTTOM       = 8  //   8  =  0th row is on the left, and 0th column is the bottom.
+};
+
 @interface LiveFaceDetector ()
 
 @property(nonatomic, retain) id videoDataOutputQueue;
@@ -22,6 +33,7 @@
 @synthesize videoDataOutput;
 @synthesize videoDataOutputQueue;
 @synthesize faceDetector;
+@synthesize detectedFaces;
 
 @synthesize latestImage;
 
@@ -50,8 +62,6 @@
     CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
     CIImage* ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
     
-    NSArray* features = [self.faceDetector featuresInImage:ciImage];
-
         /*
     // get the clean aperture
     // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
@@ -62,10 +72,11 @@
     
     self.latestImage = [UIImage imageWithCIImage:ciImage];
     
-    for (CIFaceFeature* f in features)
-    {
-        NSLog(@"Detected face with ID %d\n", f.trackingID);
-    }
+    NSNumber* orientation = [NSNumber numberWithInt:PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP];
+    NSDictionary* options = [NSDictionary dictionaryWithObject:orientation forKey:CIDetectorImageOrientation];
+    self.detectedFaces = [self.faceDetector featuresInImage:ciImage options:options];
+    
+
     /*
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         [self drawFaces:features
