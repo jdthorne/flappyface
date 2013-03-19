@@ -25,6 +25,8 @@
 		1A57D83216F797DC004BCEA7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83116F797DC004BCEA7 /* CoreImage.framework */; };
 		1A57D83416F797F3004BCEA7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A57D83316F797F2004BCEA7 /* CoreMedia.framework */; };
 		1A57D83716F79D7B004BCEA7 /* Emma-Watson.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */; };
+		1A7805DD16F8012D007A8284 /* FaceOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7805DC16F8012D007A8284 /* FaceOverlayRenderer.m */; };
+		1A7805E016F80665007A8284 /* DetectedFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7805DF16F80665007A8284 /* DetectedFace.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,10 @@
 		1A57D83116F797DC004BCEA7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		1A57D83316F797F2004BCEA7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Emma-Watson.png"; path = "Artwork/Emma-Watson.png"; sourceTree = "<group>"; };
+		1A7805DB16F8012D007A8284 /* FaceOverlayRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceOverlayRenderer.h; sourceTree = "<group>"; };
+		1A7805DC16F8012D007A8284 /* FaceOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceOverlayRenderer.m; sourceTree = "<group>"; };
+		1A7805DE16F80665007A8284 /* DetectedFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectedFace.h; sourceTree = "<group>"; };
+		1A7805DF16F80665007A8284 /* DetectedFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectedFace.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,14 +113,13 @@
 		1A2902D316F78E57000E5FF3 /* FlappyFace */ = {
 			isa = PBXGroup;
 			children = (
+				1A7805DA16F8010A007A8284 /* Face Overlay */,
 				1A2902DC16F78E57000E5FF3 /* AppDelegate.h */,
 				1A2902DD16F78E57000E5FF3 /* AppDelegate.m */,
 				1A2902E516F78E57000E5FF3 /* MainStoryboard_iPhone.storyboard */,
 				1A2902E816F78E57000E5FF3 /* MainStoryboard_iPad.storyboard */,
 				1A2902EB16F78E57000E5FF3 /* ViewController.h */,
 				1A2902EC16F78E57000E5FF3 /* ViewController.m */,
-				1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */,
-				1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */,
 				1A2902D416F78E57000E5FF3 /* Supporting Files */,
 			);
 			path = FlappyFace;
@@ -140,6 +145,19 @@
 				1A57D83616F79D7B004BCEA7 /* Emma-Watson.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		1A7805DA16F8010A007A8284 /* Face Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				1A57D82E16F792F0004BCEA7 /* LiveFaceDetector.h */,
+				1A57D82F16F792F0004BCEA7 /* LiveFaceDetector.m */,
+				1A7805DB16F8012D007A8284 /* FaceOverlayRenderer.h */,
+				1A7805DC16F8012D007A8284 /* FaceOverlayRenderer.m */,
+				1A7805DE16F80665007A8284 /* DetectedFace.h */,
+				1A7805DF16F80665007A8284 /* DetectedFace.m */,
+			);
+			name = "Face Overlay";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +232,8 @@
 				1A2902DE16F78E57000E5FF3 /* AppDelegate.m in Sources */,
 				1A2902ED16F78E57000E5FF3 /* ViewController.m in Sources */,
 				1A57D83016F792F0004BCEA7 /* LiveFaceDetector.m in Sources */,
+				1A7805DD16F8012D007A8284 /* FaceOverlayRenderer.m in Sources */,
+				1A7805E016F80665007A8284 /* DetectedFace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

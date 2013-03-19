@@ -8,11 +8,10 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+typedef void (^FacesDetectedBlock)(CGRect, NSArray*);
+
 @interface LiveFaceDetector : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
 
-@property(nonatomic, retain) AVCaptureVideoDataOutput* videoDataOutput;
-@property(nonatomic, retain) UIImage* latestImage;
-
-@property(nonatomic, retain) NSArray* detectedFaces;
+-(void) beginDetectingFacesInSession: (AVCaptureSession*) session andWhenDetected: (FacesDetectedBlock)doSomething;
 
 @end

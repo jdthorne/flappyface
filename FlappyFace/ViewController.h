@@ -12,9 +12,6 @@
 @interface ViewController : UIViewController
 
 @property(nonatomic, retain) IBOutlet UIView* cameraView;
-@property(nonatomic, retain) LiveFaceDetector* faceDetector;
-
--(IBAction)debugTap:(id)sender;
 
 
 @end

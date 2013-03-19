@@ -23,6 +23,9 @@ enum {
 
 @property(nonatomic, retain) id videoDataOutputQueue;
 @property(nonatomic, retain) CIDetector* faceDetector;
+@property(nonatomic, retain) AVCaptureVideoDataOutput* videoDataOutput;
+
+@property(nonatomic, copy) FacesDetectedBlock facesDetected;
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection;
 
@@ -33,9 +36,7 @@ enum {
 @synthesize videoDataOutput;
 @synthesize videoDataOutputQueue;
 @synthesize faceDetector;
-@synthesize detectedFaces;
-
-@synthesize latestImage;
+@synthesize facesDetected;
 
 -(id) init
 {
@@ -56,34 +57,34 @@ enum {
     return self;
 }
 
+- (void) beginDetectingFacesInSession:(AVCaptureSession *)session andWhenDetected:(FacesDetectedBlock)doSomething
+{
+    self.facesDetected = doSomething;
+
+    [session addOutput:self.videoDataOutput];
+    [[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
+    }
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
     CIImage* ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
     
-        /*
     // get the clean aperture
     // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
     // that represents image data valid for display.
     CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
     CGRect cleanAperture = CMVideoFormatDescriptionGetCleanAperture(fdesc, false);
-        */
-    
-    self.latestImage = [UIImage imageWithCIImage:ciImage];
     
     NSNumber* orientation = [NSNumber numberWithInt:PHOTOS_EXIF_0ROW_RIGHT_0COL_TOP];
     NSDictionary* options = [NSDictionary dictionaryWithObject:orientation forKey:CIDetectorImageOrientation];
-    self.detectedFaces = [self.faceDetector featuresInImage:ciImage options:options];
     
+    NSArray* detectedFaces = [self.faceDetector featuresInImage:ciImage options:options];
 
-    /*
     dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [self drawFaces:features
-            forVideoBox:cleanAperture
-            orientation:curDeviceOrientation];
+        self.facesDetected(cleanAperture, detectedFaces);
     });
-     */
 }
 
 @end

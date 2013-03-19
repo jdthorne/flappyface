@@ -11,9 +11,14 @@
 #import "AVFoundation/AVFoundation.h"
 #import "QuartzCore/QuartzCore.h"
 
+#import "FaceOverlayRenderer.h"
+
 @interface ViewController ()
 
+@property(nonatomic, retain) LiveFaceDetector* faceDetector;
 @property(nonatomic, retain) UIImageView* faceView;
+
+-(void) renderFaces: (NSArray*) faces;
 
 @end
 
@@ -61,6 +66,8 @@
 	
 	captureVideoPreviewLayer.frame = self.cameraView.bounds;
 	[viewLayer addSublayer:captureVideoPreviewLayer];
+    
+    captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 	
 	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     [device lockForConfiguration:nil];
@@ -74,38 +81,28 @@
 		NSLog(@"ERROR: trying to open camera: %@", error);
 	}
 	[session addInput:input];
-    [session addOutput:faceDetector.videoDataOutput];
-    [[self.faceDetector.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
+    [self.faceDetector beginDetectingFacesInSession:session andWhenDetected:^(CGRect aperture, NSArray* faces) {
+        [self renderFaces:faces withAperture:aperture];
+    }];
 	
 	[session startRunning];
 }
 
--(IBAction)debugTap:(id)sender
+-(void) renderFaces: (NSArray*) faces withAperture: (CGRect) aperture
 {
-    float xCenter, yCenter;
-    
-    UIImage* image = self.faceDetector.latestImage;
-    self.faceView.image = image;
-    
-    if (self.faceDetector.detectedFaces.count == 0)
+    if (faces.count == 0)
     {
+        self.faceView.hidden = true;
         return;
     }
     
-    CIFaceFeature* feature = [self.faceDetector.detectedFaces objectAtIndex:0];
-    if (!feature.hasLeftEyePosition || !feature.hasRightEyePosition)
-    {
-        return;
-    }
+    CIFaceFeature* feature = [faces objectAtIndex:0];
+    CGRect previewBox = [FaceOverlayRenderer videoPreviewBoxForGravity:AVLayerVideoGravityResizeAspectFill frameSize:self.view.frame.size apertureSize:aperture.size];
+    CGRect videoBox = aperture;
+    CGRect bounds = [FaceOverlayRenderer convertFrame:feature.bounds previewBox:previewBox forVideoBox:videoBox isMirrored:false];
     
-    xCenter = (feature.leftEyePosition.x + feature.rightEyePosition.x) / 2.0;
-    yCenter = (feature.leftEyePosition.y + feature.rightEyePosition.y) / 2.0;
-    
-    // Swap x and y
-    float xDraw = yCenter;
-    float yDraw = xCenter;
-    
-    self.faceView.frame = CGRectMake(xDraw - 25, yDraw - 25, 50, 50);
+    self.faceView.hidden = false;
+    self.faceView.frame = bounds;
 }
 
 @end
