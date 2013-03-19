@@ -66,6 +66,7 @@
     temp = originalFrame.origin.x;
     originalFrame.origin.x = originalFrame.origin.y;
     originalFrame.origin.y = temp;
+    
     // scale coordinates so they fit in the preview box, which may be scaled
     CGFloat widthScaleBy = previewBox.size.width / videoBox.size.height;
     CGFloat heightScaleBy = previewBox.size.height / videoBox.size.width;

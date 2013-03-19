@@ -18,7 +18,7 @@
 @property(nonatomic, retain) LiveFaceDetector* faceDetector;
 @property(nonatomic, retain) UIImageView* faceView;
 
--(void) renderFaces: (NSArray*) faces;
+-(void) renderFaces: (NSArray*) faces withAperture: (CGRect) aperture;
 
 @end
 
@@ -38,6 +38,7 @@
     faceDetector = [LiveFaceDetector new];
 
     UIImageView* face = [UIImageView new];
+    face.contentMode = UIViewContentModeScaleToFill;
     face.frame = CGRectMake(0, 0, 200, 200);
     
     UIImage* image = [UIImage imageNamed:@"Emma-Watson.png"];
@@ -67,7 +68,7 @@
 	captureVideoPreviewLayer.frame = self.cameraView.bounds;
 	[viewLayer addSublayer:captureVideoPreviewLayer];
     
-    captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
 	
 	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     [device lockForConfiguration:nil];
@@ -97,9 +98,13 @@
     }
     
     CIFaceFeature* feature = [faces objectAtIndex:0];
-    CGRect previewBox = [FaceOverlayRenderer videoPreviewBoxForGravity:AVLayerVideoGravityResizeAspectFill frameSize:self.view.frame.size apertureSize:aperture.size];
+    CGRect previewBox = [FaceOverlayRenderer videoPreviewBoxForGravity:AVLayerVideoGravityResizeAspect frameSize:self.cameraView.frame.size apertureSize:aperture.size];
     CGRect videoBox = aperture;
     CGRect bounds = [FaceOverlayRenderer convertFrame:feature.bounds previewBox:previewBox forVideoBox:videoBox isMirrored:false];
+    
+    float extraWidth = (bounds.size.width * 0.2);
+    float extraHeight = (bounds.size.height * 0.5);
+    bounds = CGRectMake(bounds.origin.x + extraWidth/2, bounds.origin.y - extraHeight/2, bounds.size.width + extraWidth, bounds.size.height + extraHeight);
     
     self.faceView.hidden = false;
     self.faceView.frame = bounds;
